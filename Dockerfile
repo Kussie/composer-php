@@ -7,7 +7,7 @@ ENV COMPOSER_VERSION master
 
 RUN apk add --no-cache --virtual .persistent-deps \
     git \
-    libtidy-dev \
+    tidyhtml-dev \
     unzip
 
 RUN set -xe \
