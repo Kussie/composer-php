@@ -1,29 +1,24 @@
-# Composer Docker Container
 FROM prooph/php:7.4-cli
-
 # Environmental Variables
 ENV COMPOSER_HOME /root/composer
 ENV COMPOSER_VERSION master
-
-RUN apk add --no-cache --virtual .persistent-deps \
-    git \
-    libtidy-dev \
-    exiftool \
-    unzip
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN set -xe \
-    && docker-php-ext-install \
-        tidy \
-        zip \
+    # use own name or other previous .persistent-deps will be removed
+    && apk add --no-cache --virtual .persistent-deps-composer \
+        zlib-dev \
+        libzip-dev \
+        git \
+        tidyhtml-dev \
+        unzip \
         exif \
-    && docker-php-ext-enable exif \
+    && docker-php-ext-install \
+        zip \
+        tidy \
+        exif \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer global require hirak/prestissimo
-
-# Set up the application directory
-VOLUME ["/app"]
-WORKDIR /app
-
 # Set up the command arguments
 CMD ["-"]
 ENTRYPOINT ["composer", "--ansi"]
