@@ -12,7 +12,8 @@ RUN set -xe \
         git \
         tidyhtml-dev \
         unzip \
-        exif \
+        exiftool \
+    && docker-php-ext-configure exif \
     && docker-php-ext-install \
         zip \
         tidy \
