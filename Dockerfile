@@ -8,12 +8,15 @@ ENV COMPOSER_VERSION master
 RUN apk add --no-cache --virtual .persistent-deps \
     git \
     libtidy-dev \
+    exiftool \
     unzip
 
 RUN set -xe \
     && docker-php-ext-install \
         tidy \
         zip \
+        exif \
+    && docker-php-ext-enable exif \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer global require hirak/prestissimo
 
