@@ -25,23 +25,35 @@ docker build -t intellipharm/php-composer:latest .
 Running the `composer` image is as simple as follows:
 
 ``` shell
-docker run --rm --interactive --tty --volume $PWD:/app --work-dir /app intellipharm/php-composer:latest install
+docker run --rm --interactive --tty \
+--volume $PWD:/app \
+--work-dir /app \
+intellipharm/php-composer:latest install
 ```
 
 Run `composer install`
 
 ``` shell
-docker run --rm -it -v ${DIR}/api:/app -w /app intellipharm/php-composer:latest install
+docker run --rm -it \
+-v ${DIR}/api:/app \
+-w /app \
+intellipharm/php-composer:latest install
 ```
 
 Run `composer update`
 
 ``` shell
-docker run --rm -it -v ${DIR}/api:/app -w /app intellipharm/php-composer:latest update
+docker run --rm -it \
+-v ${DIR}/api:/app \
+-w /app \
+intellipharm/php-composer:latest update
 ```
 
 Run `composer dump-autoload`
 
 ``` shell
-docker run --rm -it -v ${DIR}/api:/app -w /app intellipharm/php-composer:latest dump-autoload
+docker run --rm -it \
+-v ${DIR}/api:/app \
+-w /app \
+intellipharm/php-composer:latest dump-autoload
 ```
