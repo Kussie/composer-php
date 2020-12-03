@@ -18,8 +18,7 @@ RUN set -xe \
         zip \
         tidy \
         exif \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer global require hirak/prestissimo
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Set up the command arguments
 CMD ["-"]
 ENTRYPOINT ["composer", "--ansi"]
