@@ -13,6 +13,8 @@ You can read more about Composer in the [official documentation](https://getcomp
 This repo contains at least one branch used to auto-build docker images on [DockerHub](https://hub.docker.com/r/intellipharm/php-composer).
 
 * `master` -> Builds image `intellipharm/php-composer:latest`
+* `7.x` -> Builds image `intellipharm/php-composer:7.x`
+* `8.0` -> Builds image `intellipharm/php-composer:8.0`
 
 ## Usage
 
